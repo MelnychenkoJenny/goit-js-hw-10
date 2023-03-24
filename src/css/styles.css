@@ -8,13 +8,124 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
+  font-size: 24px;
   color: #212121;
   line-height: 1.5;
+  background-color: #D9AFD9;
+background-image: linear-gradient(to right, #D9AFD9 0%, #97D9E1 100%);
+
+
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
-  max-width: 320px;
-  margin-bottom: 16px;
+  max-width: 400px;
+
+}
+p, h1, h2, ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 480px) {
+    .container {
+      max-width: 480px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+  .section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .input-box {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+.country-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+    padding: 0;
+}
+.country-list--info {
+  list-style: none;
+}
+
+.country-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.country-list__name {
+  margin: 0;
+  margin-left: 10px;
+    font-size: 16px;
+}
+
+.country-info {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+.country-info__img {
+  width: max-content;
+}
+
+.btn-clear {
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease,transform 0.15s ease;
+  will-change: box-shadow,transform;
+  background: #FCFCFD;
+  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  height: 48px;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: #36395a;
+  transition: box-shadow 0.15s ease,transform 0.15s ease;
+}
+.btn-clear:hover {
+  box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  transform: translateY(-2px);
+}
+.btn-clear:active{
+  box-shadow: inset 0px 3px 7px #d6d6e7;
+  transform: translateY(2px);
 }
