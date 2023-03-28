@@ -8,7 +8,7 @@ const DEBOUNCE_DELAY = 300;
 const searchCountryInput = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfoContainer = document.querySelector('.country-info');
-const btnClear = document.querySelector('.js-btn-clear')
+const btnClear = document.querySelector('.js-btn-clear');
 
 searchCountryInput.addEventListener(
   'input',
@@ -24,7 +24,10 @@ function onSearchCountryInput(e) {
   }
 
   fetchCountriesAPI(searchCountry)
-    .then(data => {clearMarkUp(); chooseMarkUp(data)})
+    .then(data => {
+      clearMarkUp();
+      chooseMarkUp(data);
+    })
     .catch(() => Notify.failure('На жаль, країни з такою назвою немає.'));
 }
 
@@ -41,11 +44,28 @@ function chooseMarkUp(data) {
       makeCountryCardElementMarkUp,
       countryInfoContainer
     );
-  }}
+  }
+}
 
 function createCountryMarkUp(data, fct, container) {
   const markUp = data.map(fct);
   container.innerHTML = markUp.join('');
+  countryList.addEventListener('click', e => {
+    if (e.target.nodeName !== 'P' && e.target.nodeName !== 'IMG') {
+      return;
+    }
+
+    const clickMarkUP = data
+      .filter(
+        el =>
+          el.name.official === e.target.textContent ||
+          el.flags.png === e.target.src
+      )
+      .map(makeCountryCardElementMarkUp)
+      .join('');
+    countryInfoContainer.innerHTML = clickMarkUP;
+    countryList.innerHTML = '';
+  });
 }
 
 function makeCountryListElementMarkUp({ flags, name }) {
@@ -62,7 +82,9 @@ function makeCountryCardElementMarkUp({
   population,
   languages,
 }) {
-  return `<img class="country-info__img" src="${flags.png}" alt="${flags.alt} width="400" height="150">
+  return `<img class="country-info__img" src="${flags.png}" alt="${
+    flags.alt
+  } width="400" height="150">
 <h2 class="country-info__title">${name.official}</h2>
 <ul class="country-list--info">
 <li class="country-list__item">
@@ -70,7 +92,9 @@ function makeCountryCardElementMarkUp({
 <li>
 <p class="country-list__item-name"><b>Population: </b>${population}</p></li>
 <li>
-<p class="country-list__item-name"><b>Languages: </b>${Object.values(languages).join(', ')}</p></li>
+<p class="country-list__item-name"><b>Languages: </b>${Object.values(
+    languages
+  ).join(', ')}</p></li>
 </ul>`;
 }
 
@@ -79,9 +103,9 @@ function clearMarkUp() {
   countryInfoContainer.innerHTML = '';
 }
 
-btnClear.addEventListener('click', onClearInputBtnClick)
+btnClear.addEventListener('click', onClearInputBtnClick);
 
 function onClearInputBtnClick() {
-  searchCountryInput.value = ''
-  clearMarkUp()
+  searchCountryInput.value = '';
+  clearMarkUp();
 }
