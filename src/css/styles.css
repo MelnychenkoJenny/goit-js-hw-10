@@ -69,6 +69,7 @@ p, h1, h2, ul {
 .country-list__item {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .country-list__name {

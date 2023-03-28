@@ -91,7 +91,7 @@ function makeCountryCardElementMarkUp({
   } width="400" height="150">
 <h2 class="country-info__title">${name.official}</h2>
 <ul class="country-list--info">
-<li class="country-list__item">
+<li>
 <p class="country-list__item-name"><b>Capital: </b>${capital}</p></li>
 <li>
 <p class="country-list__item-name"><b>Population: </b>${population}</p></li>
