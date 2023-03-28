@@ -68,6 +68,7 @@ function createCountryMarkUp(data, fct, container) {
       .join('');
     countryInfoContainer.innerHTML = clickMarkUP;
     countryList.innerHTML = '';
+    searchCountryInput.value = '';
   });
 }
 
