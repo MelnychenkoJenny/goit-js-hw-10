@@ -28,7 +28,10 @@ function onSearchCountryInput(e) {
       clearMarkUp();
       chooseMarkUp(data);
     })
-    .catch(() => Notify.failure('На жаль, країни з такою назвою немає.'));
+    .catch(() => {
+      setTimeout(()=>searchCountryInput.value='', 1100)
+      clearMarkUp()
+      Notify.failure('На жаль, країни з такою назвою немає.')});
 }
 
 function chooseMarkUp(data) {
