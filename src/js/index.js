@@ -61,7 +61,7 @@ function createCountryMarkUp(data, fct, container) {
     const clickMarkUP = data
       .filter(
         el =>
-          el.name.official === e.target.textContent ||
+          el.name.common === e.target.textContent ||
           el.flags.png === e.target.src
       )
       .map(makeCountryCardElementMarkUp)
@@ -75,7 +75,7 @@ function createCountryMarkUp(data, fct, container) {
 function makeCountryListElementMarkUp({ flags, name }) {
   return `<li class="country-list__item">
   <img class="country-list__img" src="${flags.png}" alt="${flags.alt}" width="50" height="30"></img>
-  <p class="country-list__name">${name.official}</p>
+  <p class="country-list__name">${name.common}</p>
 </li>`;
 }
 
@@ -89,8 +89,10 @@ function makeCountryCardElementMarkUp({
   return `<img class="country-info__img" src="${flags.png}" alt="${
     flags.alt
   } width="400" height="150">
-<h2 class="country-info__title">${name.official}</h2>
+<h2 class="country-info__title">${name.common}</h2>
 <ul class="country-list--info">
+<li>
+<p class="country-list__item-name"><b>Official name: </b>${name.official}</p></li>
 <li>
 <p class="country-list__item-name"><b>Capital: </b>${capital}</p></li>
 <li>
