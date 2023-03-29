@@ -29,7 +29,7 @@ function onSearchCountryInput(e) {
       chooseMarkUp(data);
     })
     .catch(() => {
-      setTimeout(()=>searchCountryInput.value='', 1100)
+      setTimeout(()=>searchCountryInput.value='', 1500)
       clearMarkUp()
       Notify.failure('На жаль, країни з такою назвою немає.')});
 }
