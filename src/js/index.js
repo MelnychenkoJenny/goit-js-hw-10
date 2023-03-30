@@ -29,7 +29,7 @@ function onSearchCountryInput(e) {
       chooseMarkUp(data);
     })
     .catch(() => {
-      setTimeout(()=>searchCountryInput.value='', 1500)
+      // setTimeout(()=>searchCountryInput.value='', 1500)
       clearMarkUp()
       Notify.failure('На жаль, країни з такою назвою немає.')});
 }
@@ -54,21 +54,7 @@ function createCountryMarkUp(data, fct, container) {
   const markUp = data.map(fct);
   container.innerHTML = markUp.join('');
   countryList.addEventListener('click', e => {
-    if (e.target.nodeName !== 'P' && e.target.nodeName !== 'IMG') {
-      return;
-    }
-
-    const clickMarkUP = data
-      .filter(
-        el =>
-          el.name.common === e.target.textContent ||
-          el.flags.png === e.target.src
-      )
-      .map(makeCountryCardElementMarkUp)
-      .join('');
-    countryInfoContainer.innerHTML = clickMarkUP;
-    countryList.innerHTML = '';
-    searchCountryInput.value = '';
+    onClickCreateCountryMarkUp(e, data)
   });
 }
 
@@ -102,6 +88,24 @@ function makeCountryCardElementMarkUp({
     languages
   ).join(', ')}</p></li>
 </ul>`;
+}
+
+function onClickCreateCountryMarkUp(e, data) {
+  if (e.target.nodeName !== 'P' && e.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  const clickMarkUP = data
+    .filter(
+      el =>
+        el.name.common === e.target.textContent ||
+        el.flags.png === e.target.src
+    )
+    .map(makeCountryCardElementMarkUp)
+    .join('');
+  countryInfoContainer.innerHTML = clickMarkUP;
+  countryList.innerHTML = '';
+  searchCountryInput.value = '';
 }
 
 function clearMarkUp() {
